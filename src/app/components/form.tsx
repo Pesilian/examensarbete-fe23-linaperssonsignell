@@ -52,6 +52,7 @@ export default function Form() {
         </select>
 
         {/* Modell */}
+        {/* Ska kunna användas för post-req till process_segments men är inte funktionell i backend för tillfället*/}
         <label className="text-xs mt-4 font-medium">Modell</label>
         <select
           id="modelSelect"
@@ -70,6 +71,7 @@ export default function Form() {
         </select>
 
         {/* Checkbox för översättning */}
+        {/* Ska kunna användas för post-req till process_segments men är inte funktionell i backend för tillfället*/}
         <div className="flex items-center gap-2 mt-4">
           <input
             type="checkbox"

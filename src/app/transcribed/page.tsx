@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import ProgressBar from '../components/progressbar'
-import TranscriptionHeader from '../components/transcriptionHeader'
-import TranscriptionIcons from '../components/transcriptionIcons'
+import TranscriptionInfo from '../components/transcriptionInfo'
 import CopyBtn from '../components/copyBtn'
 import Desktop from '../components/desktop'
 import Mobile from '../components/mobile'
+import FileTitle from '../components/FileTitle'
 
 // This component is the main page for the transcription page
 
@@ -221,12 +221,14 @@ export default function FinishedTranscription() {
   return (
     <article className="h-full w-full flex flex-col lg:grid lg:grid-cols-4 lg:content-start mt-8 ">
       <section className="lg:col-span-4 lg:col-start-1 flex flex-col h-auto">
-        <TranscriptionHeader />
+        {/*Dessa är hårdkodade då det framöver ska komma från diarization_result men det har inte lagts till i backend än*/}
+
+        <FileTitle name="FileTitle.waw" />
         <div className="flex lg:pl-8 ">
-          <TranscriptionIcons speakers="2" text=" talare" />
-          <TranscriptionIcons language="Svenska" />
-          <TranscriptionIcons words={transcription} text=" ord" />
-          <TranscriptionIcons time="0:00" />
+          <TranscriptionInfo speakers="2" text=" talare" />
+          <TranscriptionInfo language="Svenska" />
+          <TranscriptionInfo words={transcription} text=" ord" />
+          <TranscriptionInfo time="0:00" />
         </div>
         <div className="flex justify-end items-end w-auto h-12">
           {segments.length > 0 && <CopyBtn text={getFullText()} />}

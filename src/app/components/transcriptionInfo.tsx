@@ -12,7 +12,7 @@ interface LabelProps {
   text?: string
 }
 
-export default function TranscriptionIcons({
+export default function TranscriptionInfo({
   speakers,
   language,
   words,
