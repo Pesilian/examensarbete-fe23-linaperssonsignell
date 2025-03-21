@@ -221,7 +221,7 @@ export default function FinishedTranscription() {
           <TranscriptionIcons words={transcription} text=" ord" />
           <TranscriptionIcons time="0:00" />
         </div>
-        <div className="flex justify-between items-end w-auto h-12  relative">
+        <div className="flex justify-between items-end w-auto h-12 relative">
           {segments.length > 0 && (
             <>
               <CopyBtn text={getFullText()} />

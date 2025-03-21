@@ -1,32 +1,31 @@
 'use client'
-import { DarkMode } from '@/services/themeService'
+import { DarkMode } from '@/src/services/themeService'
 import { useState } from 'react'
-import React from 'react'
-import { HiOutlineChevronDown } from 'react-icons/hi2'
-import { HiOutlineChevronUp } from 'react-icons/hi2'
-
-// This component is an accordion component to be used on faq-page
+import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi2'
 
 interface FaQAccordation {
-  title: string
-  content: string
+  question: string
+  answer: string
 }
 
-export default function AccordionFaq({ title, content }: FaQAccordation) {
+export default function AccordionFaq({ question, answer }: FaQAccordation) {
   const isDarkMode = DarkMode()
   const [open, setOpen] = useState(false)
 
   return (
     <div
       onClick={() => setOpen(!open)}
-      className={`h-auto w-4/6 flex flex-col self-center border-2 rounded-sm m-8 mt-12 border-t-stone-300 ${isDarkMode ? 'border-stone-950' : 'border-stone-50 '}`}
+      className={`w-auto cursor-pointer border rounded-md p-4 m-4 transition-all duration-300 ${
+        isDarkMode
+          ? 'border-stone-700 bg-stone-900 text-white'
+          : 'border-stone-300 bg-white text-black'
+      }`}
     >
-      <details className="list-none">
-        <summary className="list-none">
-          {title} {open ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
-        </summary>
-        {content}
-      </details>
+      <div className="flex justify-between items-center ">
+        <span className="font-medium">{question}</span>
+        {open ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
+      </div>
+      {open && <p className="mt-2 text-start text-sm">{answer}</p>}
     </div>
   )
 }

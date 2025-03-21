@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={(inter.variable, roboto.variable)}>
-      <body className="antialiased h-screen w-screen grid grid-cols-7 font-Inter">
+      <body className="antialiased h-screen w-screen grid grid-cols-7 --font-Inter">
         <Header />
         <main className="h-full w-full overflow-hidden  col-span-5 col-start-2 justify-self-center self-center ">
           {children}
