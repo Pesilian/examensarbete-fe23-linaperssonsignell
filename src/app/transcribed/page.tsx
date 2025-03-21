@@ -223,7 +223,7 @@ export default function FinishedTranscription() {
       <section className="lg:col-span-4 lg:col-start-1 flex flex-col h-auto">
         {/*Dessa är hårdkodade då det framöver ska komma från diarization_result men det har inte lagts till i backend än*/}
 
-        <FileTitle name="FileTitle.waw" />
+        <FileTitle name="FileTitle.wav" />
         <div className="flex lg:pl-8 ">
           <TranscriptionInfo speakers="2" text=" talare" />
           <TranscriptionInfo language="Svenska" />
