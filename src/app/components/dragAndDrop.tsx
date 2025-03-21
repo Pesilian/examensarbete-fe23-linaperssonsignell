@@ -4,6 +4,7 @@ import { useRef, useState } from 'react'
 //Importerade icons från react-icons
 import { LuAudioLines } from 'react-icons/lu'
 import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
+import { DarkMode } from '@/src/services/themeService'
 
 // This component is a drag and drop component
 // It allows the user to drag and drop a file or click to select a file
@@ -16,6 +17,7 @@ export default function DragAndDrop() {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [isUploading, setIsUploading] = useState(false)
   const [uploadStatus, setUploadStatus] = useState<string>('')
+  const isDarkMode = DarkMode()
   const apiURL = process.env.NEXT_PUBLIC_API_URL
 
   //nlyallowing files with these endings
@@ -141,11 +143,19 @@ export default function DragAndDrop() {
       <h3 className="mb-4 text-xs text-stone-400">
         Max 200MB - WAV, MP3, OGG, M4A
       </h3>
-      <div className="self-center justify-center items-center w-5/6 h-60 flex bg-stone-300 rounded mb-8">
+      <div
+        className={`self-center justify-center items-center w-5/6 h-60 flex ${isDarkMode ? 'bg-stone-700' : 'bg-stone-300'} rounded mb-8`}
+      >
         <form
-          className={`${
-            dragActive ? 'bg-stone-200' : 'bg-stone-300'
-          } p-8 w-5/6 h-5/6 rounded text-center flex flex-col text-center  justify-center hover:bg-stone-200 `}
+          className={`p-8 w-5/6 h-5/6 rounded text-center flex flex-col justify-center  $${
+            dragActive
+              ? isDarkMode
+                ? 'bg-stone-600 hover:bg-stone-500'
+                : 'bg-stone-200 hover:bg-stone-100'
+              : isDarkMode
+                ? 'bg-stone-700 hover:bg-stone-600'
+                : 'bg-stone-300 hover:bg-stone-200'
+          }`}
           onDragEnter={handleDragEnter}
           onSubmit={(e) => e.preventDefault()}
           onDrop={handleDrop}

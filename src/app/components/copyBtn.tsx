@@ -23,7 +23,7 @@ export default function CopyBtn({ text }: CopyBtnProps) {
   return (
     <motion.button
       onClick={copyToClipboard}
-      className="flex items-center w-40 h-12 rounded"
+      className="flex items-center w-auto pr-8 h-12"
       animate={{ color: copied ? '#16a34a' : '#1c1917' }}
       transition={{ duration: 0.5 }}
     >

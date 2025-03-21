@@ -30,9 +30,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={(inter.variable, roboto.variable)}>
-      <body className="antialiased h-screen w-screen grid grid-cols-7 --font-Inter">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <body className="antialiased h-screen w-screen flex flex-col lg:grid  lg:grid-cols-7 --font-Inter">
         <Header />
-        <main className="h-full w-full overflow-hidden  col-span-5 col-start-2 justify-self-center self-center ">
+        <main className="h-full w-full overflow-hidden col-span-4 col-start-1 lg:col-span-5 lg:col-start-2 justify-self-center self-center ">
           {children}
         </main>
         <FaQLink />

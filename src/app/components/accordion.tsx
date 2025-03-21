@@ -22,10 +22,10 @@ export default function AccordionFaq({ question, answer }: FaQAccordation) {
       }`}
     >
       <div className="flex justify-between items-center ">
-        <span className="font-medium">{question}</span>
+        <span className="font-medium text-sm lg:text-lg">{question}</span>
         {open ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
       </div>
-      {open && <p className="mt-2 text-start text-sm">{answer}</p>}
+      {open && <p className="mt-2 text-start text-xs lg:text-sm">{answer}</p>}
     </div>
   )
 }

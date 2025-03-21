@@ -2,16 +2,15 @@
 import { PiSpeakerSimpleHighLight } from 'react-icons/pi'
 import { DarkMode } from '@/src/services/themeService'
 
-interface Segment {
+interface DesktopProps {
   speaker: string
   start: string
   end: string
   text: string
-  transcriptionMode?: boolean
 }
 
 //segment component that displays the speaker, start and end time and the text, is the main focus on the transcribed page
-export default function Segment({ speaker, start, end, text }: Segment) {
+export default function Desktop({ speaker, start, end, text }: DesktopProps) {
   const isDarkMode = DarkMode()
 
   return (
