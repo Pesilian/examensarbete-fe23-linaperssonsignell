@@ -4,11 +4,13 @@ import { useEffect, useState } from 'react'
 //import of components
 import DragAndDrop from './dragAndDrop'
 import Button from './button'
+import { DarkMode } from '@/src/services/themeService'
 
 export default function Form() {
   const [selectNumber, setSelectNumber] = useState<number | null>(2)
   const [selectModel, setSelectModel] = useState<string | null>('small')
   const [selectTranslation, setSelectTranslation] = useState<boolean>(false)
+  const isDarkMode = DarkMode()
 
   //Stores formdata in localstorage to be used in transcribed.tsx
   useEffect(() => {
@@ -23,7 +25,9 @@ export default function Form() {
 
   return (
     //Form for the transcription settings
-    <section className="flex flex-col col-span-2 col-start-2 justify-self-center self-center bg-white rounded-sm h-auto w-96 p-2">
+    <section
+      className={`flex flex-col lg:col-span-2 lg:col-start-3  lg:justify-self-center lg:self-center rounded-sm h-auto w-auto lg:w-96 p-2 ${isDarkMode ? 'bg-stone-950' : ' bg-white'}`}
+    >
       <h2 className="font-Roboto text-2xl font-medium">Inställningar</h2>
       <h3 className="font-Roboto text-nowrap text-xs text-stone-700">
         Konfigurera din transkription
@@ -86,7 +90,7 @@ export default function Form() {
       <div className="flex justify-between mt-4">
         <Button
           label="Tillbaka"
-          color="secondary"
+          color={isDarkMode ? 'darkMode' : 'secondary'}
           textColor="stone-50"
           link="/"
         />

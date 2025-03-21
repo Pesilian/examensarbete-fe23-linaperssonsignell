@@ -4,7 +4,7 @@
 
 export default function TranscriptionHeader() {
   return (
-    <h2 className="text-4xl font-Roboto font-bold tracking-wide">
+    <h2 className="lg:text-4xl text-2xl pl-2 lg:pl-8 font-Roboto font-bold tracking-wide">
       Transcription file title
     </h2>
   )

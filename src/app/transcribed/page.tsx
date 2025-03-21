@@ -1,11 +1,12 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Segment from '../components/segment'
 import ProgressBar from '../components/progressbar'
 import TranscriptionHeader from '../components/transcriptionHeader'
 import TranscriptionIcons from '../components/transcriptionIcons'
 import CopyBtn from '../components/copyBtn'
+import Desktop from '../components/desktop'
+import Mobile from '../components/mobile'
 
 // This component is the main page for the transcription page
 
@@ -21,13 +22,20 @@ export default function FinishedTranscription() {
   const [progress, setProgress] = useState(0)
   const [transcription, setTranscription] = useState('')
   const [segments, setSegments] = useState<Segment[]>([])
-  const [transcriptionMode, setTranscriptionMode] = useState(true)
+  const [smallScreenMode, setsmallScreenMode] = useState(false)
   const [formData, setFormData] = useState<{
     selectNumber: number | null
     selectModel: string | null
     selectTranslation: boolean
   } | null>(null)
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isSmall = window.matchMedia('(max-width: 768px)').matches
+      setsmallScreenMode(isSmall)
+    }
+  }, [])
 
   //Formats the timestamp to minutes and seconds
 
@@ -116,7 +124,6 @@ export default function FinishedTranscription() {
               if (json.status === 'complete') {
                 console.log('Segmentering komplett:', json.diarization_results)
                 setSegments(json.diarization_results)
-                setTranscriptionMode(true)
                 return
               }
             } catch (error) {
@@ -212,38 +219,138 @@ export default function FinishedTranscription() {
   }
 
   return (
-    <article className="h-full w-full grid grid-cols-7  content-start mt-8 ">
-      <section className="col-span-7 col-start-1 flex flex-col h-auto">
+    <article className="h-full w-full flex flex-col lg:grid lg:grid-cols-4 lg:content-start mt-8 ">
+      <section className="lg:col-span-4 lg:col-start-1 flex flex-col h-auto">
         <TranscriptionHeader />
-        <div className="flex ">
+        <div className="flex lg:pl-8 ">
           <TranscriptionIcons speakers="2" text=" talare" />
           <TranscriptionIcons language="Svenska" />
           <TranscriptionIcons words={transcription} text=" ord" />
           <TranscriptionIcons time="0:00" />
         </div>
-        <div className="flex justify-between items-end w-auto h-12  relative">
-          {segments.length > 0 && (
-            <>
-              <CopyBtn text={getFullText()} />
-            </>
-          )}
+        <div className="flex justify-end items-end w-auto h-12">
+          {segments.length > 0 && <CopyBtn text={getFullText()} />}
         </div>
       </section>
-
-      <section className="w-full h-auto col-span-7 col-start-1 font-Inter overflow-auto overscroll-contain flex flex-col p-2 bg-white rounded-sm mr-4 z-10">
+      <section className="w-full h-auto lg:col-span-7 lg:col-start-1 font-Inter overflow-auto overscroll-contain flex flex-col p-2 rounded-sm mr-4 z-10">
         {segments.length === 0 ? (
           <ProgressBar progress={progress} />
         ) : (
-          segments.map((segment: Segment, index: number) => (
-            <Segment
-              key={index}
-              speaker={segment.speaker.replace('SPEAKER_', '')}
-              start={formatTime(segment.start)}
-              end={formatTime(segment.end)}
-              text={segment.text}
-              transcriptionMode={transcriptionMode}
+          segments.map((segment: Segment, index: number) =>
+            smallScreenMode ? (
+              <Mobile
+                key={index}
+                speaker={segment.speaker.replace('SPEAKER_', '')}
+                start={formatTime(segment.start)}
+                end={formatTime(segment.end)}
+                text={segment.text}
+              />
+            ) : (
+              <Desktop
+                key={index}
+                speaker={segment.speaker.replace('SPEAKER_', '')}
+                start={formatTime(segment.start)}
+                end={formatTime(segment.end)}
+                text={segment.text}
+              />
+            )
+          )
+        )}
+
+        {smallScreenMode ? (
+          <>
+            <Mobile
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
             />
-          ))
+            <Mobile
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+            <Mobile
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+            <Mobile
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+            <Mobile
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+            <Mobile
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+          </>
+        ) : (
+          <>
+            <Desktop
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+            <Desktop
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+            <Desktop
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+            <Desktop
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+            <Desktop
+              speaker={'1'}
+              start={'00:00'}
+              end={'00:10'}
+              text={
+                'Tempor officia occaecat elit laboris incididunt qui et qui aliqua ut eu.'
+              }
+            />
+          </>
         )}
       </section>
     </article>

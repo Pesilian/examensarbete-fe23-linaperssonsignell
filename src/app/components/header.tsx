@@ -1,23 +1,20 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
-
-//Header component, is used in layout.tsx
-
 import { DarkMode } from '../../services/themeService'
 
 export default function Header() {
   const isDarkMode = DarkMode()
   return (
-    <header className="flex w-full col-span-1 col-start-1">
-      <Link href="/" className="max-h-40">
+    <header className="relative lg:w-full lg:col-span-1 lg:col-start-1 overflow-visible">
+      <Link href="/" className="block relative h-[50px] lg:h-[100px]">
         <Image
           src={isDarkMode ? '/grLogotyp_dark.svg' : '/grLogotyp.svg'}
           alt="GR Logga"
           width={215}
           height={70}
-          priority={true}
-          className="m-10 w-40 h-auto "
+          priority
+          className="absolute top-4 left-4 w-[100px] lg:w-[200px] h-auto z-50"
         />
       </Link>
     </header>

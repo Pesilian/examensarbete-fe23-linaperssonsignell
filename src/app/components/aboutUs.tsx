@@ -5,15 +5,15 @@ import FormLink from './formLink'
 
 export default function AboutUs() {
   return (
-    <aside className="col-span-2 col-start-2  justify-self-center self-center w-1/2">
-      <h2 className=" font-black text-5xl mb-4">GR Transcripion</h2>
-      <p className="font-Roboto text-base/7 w-4/6">
+    <aside className="flex flex-col justify-center p-10 lg:text-left lg:pl-10 lg:col-span-2 lg:col-start-3  lg:justify-self-center lg:self-center lg:w-5/6">
+      <h2 className=" font-black text-center text-5xl mb-4">GR Transcripion</h2>
+      <p className="font-Roboto text-base/7">
         Vår AI-drivna transkriberingstjänst använder den senaste teknologin för
         att omvandla tal till text med hög precision. Tjänsten är designad för
         att hantera olika accenter, bakgrundsljud och talhastigheter, vilket gör
         den perfekt för ett brett spektrum av användningsområden.
       </p>
-      <p className="font-Roboto text-base/7 mt-4 w-5/6">
+      <p className="hidden lg:block font-Roboto text-base/7 mt-4">
         Oavsett om du behöver transkribera intervjuer, föreläsningar, möten
         eller podcasts, så kan vår AI ge dig en pålitlig och tidsbesparande
         lösning för att skapa exakta transkriptioner. Upplev enkelheten i att få
