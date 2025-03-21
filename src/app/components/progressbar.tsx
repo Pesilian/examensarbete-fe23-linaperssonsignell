@@ -8,11 +8,9 @@ interface ProgressBarProps {
 
 export default function ProgressBar({ progress }: ProgressBarProps) {
   return (
-    <div className="bg-gray-200 h-4 rounded w-full">
-      <div
-        className="bg-blue-500 h-4 rounded"
-        style={{ width: `${progress}%` }}
-      ></div>
+    <div className="flex flex-col justify-center items-center">
+      <div className="w-16 h-16 border-t-4 border-stone-500 border-solid rounded-full animate-spin mb-10" />
+      <p>Processing {progress} %</p>
     </div>
   )
 }
