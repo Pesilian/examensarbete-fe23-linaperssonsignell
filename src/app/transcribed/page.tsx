@@ -230,6 +230,10 @@ export default function FinishedTranscription() {
         </div>
         <div className="flex justify-end items-end w-auto h-12">
           {segments.length > 0 && <CopyBtn text={getFullText()} />}
+
+          {/* Placeholder copy btn*/}
+
+          {/* <CopyBtn text={getFullText()} /> */}
         </div>
       </section>
       <section className="w-full h-auto lg:col-span-7 lg:col-start-1 font-Inter overflow-auto overscroll-contain flex flex-col p-2 rounded-sm mr-4 z-10">
@@ -257,7 +261,8 @@ export default function FinishedTranscription() {
           )
         )}
 
-        {smallScreenMode ? (
+        {/*Placeholder transcription*/}
+        {/* {smallScreenMode ? (
           <>
             <Mobile
               speaker={'1'}
@@ -351,7 +356,7 @@ export default function FinishedTranscription() {
               }
             />
           </>
-        )}
+        )} */}
       </section>
     </article>
   )

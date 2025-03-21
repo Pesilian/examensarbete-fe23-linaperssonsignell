@@ -35,6 +35,7 @@ export async function GET() {
     return NextResponse.json(grouped, {
       status: 200,
       headers: {
+        'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
       },
     })
