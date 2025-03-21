@@ -8,6 +8,10 @@ interface FaQAccordation {
   answer: string
 }
 
+// AccordionFaq component – displays a collapsible FAQ item.
+// Shows a question and toggles the visibility of the answer on click.
+// Supports dark mode styling and includes open/close icons.
+
 export default function AccordionFaq({ question, answer }: FaQAccordation) {
   const isDarkMode = DarkMode()
   const [open, setOpen] = useState(false)

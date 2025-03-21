@@ -8,9 +8,13 @@ interface FaqItem {
   answer: string
   header?: string
 }
+
+//Lambda function to get FaQ from a dynamoDB-table and render on FAQ-page
+
 const client = new DynamoDBClient({
   region: process.env.AWS_REGION,
 })
+
 const dynamoDB = DynamoDBDocumentClient.from(client)
 
 export async function GET() {
@@ -21,6 +25,8 @@ export async function GET() {
   try {
     const command = new ScanCommand(params)
     const data = await dynamoDB.send(command)
+
+    //Uses header to sort question/answers into categorys, if no category present on item its label "Övrigt"
 
     const grouped = (data.Items as FaqItem[])?.reduce(
       (acc: Record<string, FaqItem[]>, item: FaqItem) => {

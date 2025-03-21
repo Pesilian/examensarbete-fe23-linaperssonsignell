@@ -6,7 +6,7 @@ import TranscriptionInfo from '../components/transcriptionInfo'
 import CopyBtn from '../components/copyBtn'
 import Desktop from '../components/desktop'
 import Mobile from '../components/mobile'
-import FileTitle from '../components/FileTitle'
+import FileTitle from '../components/fileTitle'
 
 // This component is the main page for the transcription page
 

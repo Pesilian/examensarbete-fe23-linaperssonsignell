@@ -7,7 +7,8 @@ interface MobileProps {
   text: string
 }
 
-//segment component that displays the speaker, start and end time and the text, is the main focus on the transcribed page
+//Component that renders finished and segmented transcription if on mobile device/ small screen
+//Is the main focus on the transcribed page
 export default function Mobile({ speaker, start, end, text }: MobileProps) {
   return (
     <section className="mb-4 p-4 w-full h-auto rounded-sm flex">

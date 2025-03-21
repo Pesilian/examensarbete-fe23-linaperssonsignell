@@ -1,6 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
 
+// DarkMode hook – detects if the user prefers dark mode using the browser's color scheme settings.
+// Returns true if dark mode is active.
+
 export const DarkMode = (): boolean => {
   const [isDarkMode, setIsDarkMode] = useState(false)
 

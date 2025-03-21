@@ -4,7 +4,7 @@ interface ProgressBarProps {
   progress: number
 }
 
-//simple progress bar component that is due to be further developed
+//simple progress bar component
 
 export default function ProgressBar({ progress }: ProgressBarProps) {
   return (

@@ -9,7 +9,8 @@ interface DesktopProps {
   text: string
 }
 
-//segment component that displays the speaker, start and end time and the text, is the main focus on the transcribed page
+//Component that renders finished and segmented transcription if on desktop
+//Is the main focus on the transcribed page
 export default function Desktop({ speaker, start, end, text }: DesktopProps) {
   const isDarkMode = DarkMode()
 
