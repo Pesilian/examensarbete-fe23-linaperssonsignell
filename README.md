@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Setup to Run Project in Docker
 
-## Getting Started
+## Prerequisites
 
-First, run the development server:
+- **Docker** installed (if not, follow [this guide](https://docs.docker.com/get-docker/)).
+- **Docker Desktop** installed (if you want to use a GUI for managing Docker).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Step 1: Clone the Project
+
+First, clone the repository. Open your terminal and run:
+
+```sh
+git clone https://github.com/Pesilian/grait-transcribe-frontend.git
+cd grait-transcribe-frontend
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Step 2: Build and Start the Docker Container
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Navigate to your frontend folder** (if not already there):
 
-## Learn More
+```sh
+cd grait-transcribe-frontend
+```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Create .env.local in root of project** :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+Use template and copy in to .env.local-file.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Build and start the Docker container** by running the following command:
 
-## Deploy on Vercel
+```sh
+docker compose up --build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Step 3: Access Your Application
+
+```
+http://localhost:3000
+```
+
+---
+
+## Step 4: Stop the Container
+
+When you're done and want to stop the container, run:
+
+```sh
+docker compose down
+```
+
+This command will shut down and remove the container.
+
+---
+
+## Step 5: Manage and Debug the Container (Optional)
+
+To follow the logs of the container, you can run:
+
+```sh
+docker compose logs -f
+```
+
+---
+
+## Common Issue and Solutions
+
+### **Port already in use**
+
+If you get an error saying port 3000 is already in use, you can change the mapped port in `docker-compose.yml`:
+
+```yaml
+ports:
+  - '4000:3000' # Map port 4000 on your machine to 3000 in the container
+```
+
+---
