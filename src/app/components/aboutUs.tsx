@@ -6,7 +6,9 @@ import FormLink from './formLink'
 export default function AboutUs() {
   return (
     <aside className="flex flex-col justify-center p-10 lg:text-left lg:pl-10 lg:col-span-2 lg:col-start-3  lg:justify-self-center lg:self-center lg:w-5/6">
-      <h2 className=" font-black text-center text-5xl mb-4">GR Transcripion</h2>
+      <h2 className=" font-black text-center lg:text-left lg:text-nowrap text-5xl mb-4">
+        GR Transcripion
+      </h2>
       <p className="font-Roboto text-base/7">
         Vår AI-drivna transkriberingstjänst använder den senaste teknologin för
         att omvandla tal till text med hög precision. Tjänsten är designad för
