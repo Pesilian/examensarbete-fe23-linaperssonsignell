@@ -28,7 +28,9 @@ export default function Form() {
     <section
       className={`flex flex-col lg:col-span-2 lg:col-start-3  lg:justify-self-center lg:self-center rounded-sm h-auto w-auto lg:w-96 p-2 ${isDarkMode ? 'bg-stone-950' : ' bg-white'}`}
     >
-      <h2 className="font-Roboto text-2xl font-medium">Inställningar</h2>
+      <h2 className="font-Roboto text-3xl font-bold text-[#8E0826]">
+        Inställningar
+      </h2>
       <h3 className="font-Roboto text-nowrap text-xs text-stone-700">
         Konfigurera din transkription
       </h3>
@@ -92,14 +94,14 @@ export default function Form() {
       <div className="flex justify-between mt-4">
         <Button
           label="Tillbaka"
-          color={isDarkMode ? 'darkMode' : 'secondary'}
+          color={isDarkMode ? 'darkModeSecondary' : 'secondary'}
           textColor="stone-50"
           link="/"
         />
         <Button
           label="Transkribera"
-          textColor="stone-50"
-          color="primary"
+          textColor={isDarkMode ? 'stone-50' : 'stone-950'}
+          color={isDarkMode ? 'darkModePrimary' : 'primary'}
           link="/transcribed"
         />
       </div>

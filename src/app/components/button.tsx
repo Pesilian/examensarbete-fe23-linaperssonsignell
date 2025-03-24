@@ -6,7 +6,12 @@ import Link from 'next/link'
 interface ButtonProps {
   label: string
   textColor: string
-  color?: 'primary' | 'secondary' | 'darkMode' | 'danger'
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'darkModePrimary'
+    | 'darkModeSecondary'
+    | 'danger'
   link?: string
   disabled?: boolean
 }
@@ -19,9 +24,10 @@ export default function Button({
   disabled,
 }: ButtonProps) {
   const colors: Record<string, string> = {
-    primary: 'bg-stone-950',
+    primary: 'bg-[#EDD896]',
     secondary: 'bg-stone-300',
-    darkMode: 'bg-stone-700',
+    darkModePrimary: 'bg-stone-800',
+    darkModeSecondary: 'bg-stone-700',
     danger: 'bg-red-500',
   }
 

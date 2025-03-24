@@ -124,6 +124,7 @@ export default function DragAndDrop() {
       const data = await response.json()
       setUploadStatus('Uppladdad')
       console.log(uploadStatus)
+      localStorage.setItem('fileName', audioFile.name)
 
       console.log(data)
     } catch (error) {
@@ -144,17 +145,17 @@ export default function DragAndDrop() {
         Max 200MB - WAV, MP3, OGG, M4A
       </h3>
       <div
-        className={`self-center justify-center items-center w-5/6 h-60 flex ${isDarkMode ? 'bg-stone-700' : 'bg-stone-300'} rounded mb-8`}
+        className={`self-center justify-center items-center w-5/6 h-60 flex ${isDarkMode ? 'bg-stone-700' : 'bg-[#A9CFE0]'} rounded mb-8`}
       >
         <form
-          className={`p-8 w-5/6 h-5/6 rounded text-center flex flex-col justify-center  $${
+          className={`p-8 w-5/6 h-5/6 rounded text-center flex flex-col justify-center  ${
             dragActive
               ? isDarkMode
                 ? 'bg-stone-600 hover:bg-stone-500'
-                : 'bg-stone-200 hover:bg-stone-100'
+                : 'bg-[#C3DDE9] hover:bg-stone-100'
               : isDarkMode
                 ? 'bg-stone-700 hover:bg-stone-600'
-                : 'bg-stone-300 hover:bg-stone-200'
+                : 'bg-[#A9CFE0] hover:bg-[#C3DDE9]'
           }`}
           onDragEnter={handleDragEnter}
           onSubmit={(e) => e.preventDefault()}
@@ -180,7 +181,7 @@ export default function DragAndDrop() {
             <div className="flex flex-col items-center" onClick={removeFile}>
               {isUploading ? (
                 <div className="flex flex-col justify-center items-center">
-                  <div className="w-16 h-16 border-t-4 border-stone-500 border-solid rounded-full animate-spin mb-2" />
+                  <div className="w-16 h-16 border-t-4 border-green-200 border-solid rounded-full animate-spin mb-2" />
                   <p className="text-xs">Laddar upp...</p>
                 </div>
               ) : uploadStatus === 'Uppladdad' ? (

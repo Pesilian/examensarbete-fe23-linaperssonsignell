@@ -9,8 +9,8 @@ interface FileTitleProps {
 //Title of finished transcription
 export default function FileTitle({ name }: FileTitleProps) {
   return (
-    <h2 className="lg:text-4xl text-2xl pl-2 lg:pl-8 font-Roboto font-bold tracking-wide">
-      {name}
+    <h2 className="lg:text-4xl text-2xl pl-2 lg:pl-10 font-Roboto font-bold tracking-wide text-[#8E0826]">
+      | {name} |
     </h2>
   )
 }

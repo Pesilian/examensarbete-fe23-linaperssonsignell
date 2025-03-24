@@ -31,6 +31,7 @@ export default function FinishedTranscription() {
     selectModel: string | null
     selectTranslation: boolean
   } | null>(null)
+
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
   useEffect(() => {
@@ -63,6 +64,13 @@ export default function FinishedTranscription() {
       } else {
         console.warn('Ingen formulärdata hittades i localStorage.')
       }
+    }
+  }, [])
+
+  useEffect(() => {
+    const savedFileName = localStorage.getItem('fileName')
+    if (savedFileName) {
+      console.log('Uppladdad fil:', savedFileName)
     }
   }, [])
 
@@ -215,7 +223,6 @@ export default function FinishedTranscription() {
     }
   }
 
-
   //Merges segments from same speaker into one segment if they appear after oneanother
   const mergeConsecutiveSegments = (segments: Segment[]): Segment[] => {
     if (segments.length === 0) return []
@@ -261,10 +268,8 @@ export default function FinishedTranscription() {
 
   return (
     <article className="h-full w-full flex flex-col lg:grid lg:grid-cols-4 lg:content-start mt-8 ">
-      <section className="lg:col-span-4 lg:col-start-1 flex flex-col h-auto">
-        {/*FileTitle är hårdkodad då det framöver ska komma från diarization_result men det har inte lagts till i backend än*/}
-
-        <FileTitle name="FileTitle.wav" />
+      <section className="lg:col-span-4 lg:col-start-1 flex flex-col h-auto ">
+        <FileTitle name={localStorage.getItem('fileName') ?? 'Ingen fil'} />
         <div className="flex lg:pl-8 ">
           <TranscriptionInfo
             speakers={formData?.selectNumber ?? undefined}

@@ -14,6 +14,25 @@ interface DesktopProps {
 export default function Desktop({ speaker, start, end, text }: DesktopProps) {
   const isDarkMode = DarkMode()
 
+  const pastelColors = [
+    'bg-red-200',
+    'bg-orange-200',
+    'bg-amber-200',
+    'bg-yellow-200',
+    'bg-lime-200',
+    'bg-green-200',
+    'bg-teal-200',
+    'bg-cyan-200',
+    'bg-blue-200',
+    'bg-purple-200',
+  ]
+
+  // Fallback om vi inte har färg för talaren
+  const getSpeakerColor = (speaker: string) => {
+    const speakerNumber = parseInt(speaker.replace('SPEAKER_', '').trim())
+    return pastelColors[speakerNumber % pastelColors.length]
+  }
+
   return (
     <section className="w-full h-auto rounded-sm flex">
       <div
@@ -28,8 +47,8 @@ export default function Desktop({ speaker, start, end, text }: DesktopProps) {
         >
           <span
             className={`${
-              isDarkMode ? 'bg-stone-500 text-stone-50' : 'bg-stone-200'
-            } h-10 w-10 text-center p-2 rounded-full mr-2 text-sm`}
+              isDarkMode ? 'text-stone-50' : 'text-stone-900'
+            } ${getSpeakerColor(speaker)} h-10 w-10 text-center p-2 rounded-full mr-2 text-sm font-bold`}
           >
             {speaker}
           </span>
