@@ -1,6 +1,8 @@
 import { DarkMode } from '@/src/services/themeService'
 import { useEffect, useState } from 'react'
 
+//Animation on fron page to illustrate the steps to start a new transcription
+
 export default function StepAnimation() {
   const [visibleSteps, setVisibleSteps] = useState(0)
   const isDarkMode = DarkMode()
@@ -34,7 +36,6 @@ export default function StepAnimation() {
               : 'opacity-0 translate-y-8 transform transition duration-300 scale-[1.5]'
           } ${index % 2 === 0 ? 'self-start ml-10' : 'self-end mr-10'}`}
         >
-          {/* Etikett */}
           <span
             className={`absolute -top-1 -left-1 lg:top-0 lg:left-2 ${isDarkMode ? 'text-stone-50' : 'text-ston-950'} font-black text-3xl lg:text-5xl px-2 py-1 rounded-md`}
             style={{ zIndex: 10 }}
@@ -42,7 +43,6 @@ export default function StepAnimation() {
             {index + 1}
           </span>
 
-          {/* Bubblan */}
           <div
             className={`font-Roboto flex items-center justify-center w-28 h-28 lg:w-44 lg:h-44 rounded-full transform transition duration-300 ${
               isDarkMode ? 'bg-[#8E0826]' : 'bg-[#EDD896]'

@@ -13,6 +13,8 @@ interface Props {
   segments: Segment[]
 }
 
+//Component to display total speakingtime per speaker changes to hidden on mobile
+
 function formatTime(totalSeconds: number) {
   const minutes = Math.floor(totalSeconds / 60)
   const seconds = Math.floor(totalSeconds % 60)
@@ -30,7 +32,7 @@ const SpeakerTalkTime: React.FC<Props> = ({ segments }) => {
 
   return (
     <div className="flex">
-      {/* Toggle-knapp visas bara på mobil */}
+      {/* Toggle only visible on mobile */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="lg:hidden text-xs  "
@@ -38,7 +40,7 @@ const SpeakerTalkTime: React.FC<Props> = ({ segments }) => {
         {isOpen ? '' : <HiOutlineChevronRight className="text-xl" />}
       </button>
 
-      {/* Talartider: alltid synligt på desktop, togglable på mobil */}
+      {/* TalkTime is always visible on desktop*/}
       <div
         onClick={() => setIsOpen(!isOpen)}
         className={`flex-col lg:flex-row flex items-start lg:items-center h-auto pl-2 lg:pl-8 lg:h-12 transition-all duration-300 ${
