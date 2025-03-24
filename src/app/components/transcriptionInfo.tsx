@@ -5,7 +5,7 @@ import { DarkMode } from '@/src/services/themeService'
 //Icons for transcription page, shows information abot transcribed file, is due to be further developed
 
 interface LabelProps {
-  speakers?: string
+  speakers?: number
   language?: string
   words?: string
   time?: string
