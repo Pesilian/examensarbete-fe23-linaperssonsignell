@@ -1,7 +1,7 @@
 'use client'
 import { DarkMode } from '@/src/services/themeService'
 import { useState } from 'react'
-import { HiOutlineChevronDown, HiOutlineChevronUp } from 'react-icons/hi2'
+import { HiOutlineChevronDown } from 'react-icons/hi2'
 
 interface FaQAccordation {
   question: string
@@ -19,17 +19,36 @@ export default function AccordionFaq({ question, answer }: FaQAccordation) {
   return (
     <div
       onClick={() => setOpen(!open)}
-      className={`w-auto cursor-pointer border rounded-md p-4 m-4 transition-all duration-300 ${
-        isDarkMode
-          ? 'border-stone-700 bg-stone-900 text-white'
-          : 'border-stone-300 bg-white text-black'
+      className={`w-auto cursor-pointer p-4 m-4 transition-all duration-300 overflow-hidden ${
+        open
+          ? isDarkMode
+            ? ' bg-stone-900 text-white'
+            : ' text-black'
+          : isDarkMode
+            ? ' bg-stone-950 text-white'
+            : 'text-black'
       }`}
     >
-      <div className="flex justify-between items-center ">
-        <span className="font-medium text-sm lg:text-lg">{question}</span>
-        {open ? <HiOutlineChevronUp /> : <HiOutlineChevronDown />}
+      <div className="flex justify-between items-center">
+        <span className="font-medium text-sm lg:text-lg transition-all ease-in-out duration-700">
+          {question}
+        </span>
+        <HiOutlineChevronDown
+          className={`transform transition-transform duration-700 ${
+            open ? 'rotate-180' : ''
+          }`}
+        />
       </div>
-      {open && <p className="mt-2 text-start text-xs lg:text-sm">{answer}</p>}
+
+      <div
+        className={`transition-all duration-700 ease-in-out overflow-hidden ${
+          open
+            ? 'max-h-[500px] opacity-100 translate-y-0 mt-2'
+            : 'max-h-0 opacity-0 -translate-y-2'
+        }`}
+      >
+        <p className="text-start text-xs lg:text-sm">{answer}</p>
+      </div>
     </div>
   )
 }

@@ -8,6 +8,8 @@ import Desktop from '../components/desktop'
 import Mobile from '../components/mobile'
 import FileTitle from '../components/fileTitle'
 import SpeakerTalkTime from '../components/speakerTalkTime'
+import Button from '../components/button'
+import { DarkMode } from '@/src/services/themeService'
 
 // This component is the main page for the transcription page
 
@@ -26,6 +28,8 @@ export default function FinishedTranscription() {
   const [smallScreenMode, setsmallScreenMode] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [totalDuration, setTotalDuration] = useState(0)
+  const [status, setStatus] = useState<string>('Transkriberar ljud')
+  const isDarkMode = DarkMode()
   const [formData, setFormData] = useState<{
     selectNumber: number | null
     selectModel: string | null
@@ -207,6 +211,7 @@ export default function FinishedTranscription() {
                   setTranscription(json.word_count)
                   setProgress(0)
                   startSegments()
+                  setStatus('Analyserar och strukturerar innehållet')
                   return
                 }
               } catch (error) {
@@ -279,7 +284,7 @@ export default function FinishedTranscription() {
           <TranscriptionInfo words={transcription} text=" ord" />
           <TranscriptionInfo time={formatTime(totalDuration)} />
         </div>
-        <div className="flex justify-between items-end w-auto h-12">
+        <div className="flex justify-between items-center w-full px-2 lg:px-0 h-12">
           {segments.length > 0 && <SpeakerTalkTime segments={segments} />}
 
           {segments.length > 0 && <CopyBtn text={getFullText()} />}
@@ -287,11 +292,19 @@ export default function FinishedTranscription() {
       </section>
       <section className="w-full h-auto lg:col-span-7 lg:col-start-1 font-Inter overflow-auto overscroll-contain flex flex-col p-2 rounded-sm mr-4 z-10">
         {errorMessage ? (
-          <div className="bg-red-100 text-red-800 text-center rounded-md p-3 mx-4 mb-4">
-            ⚠️ {errorMessage}
-          </div>
+          <>
+            <div className="bg-red-100 text-red-800 text-center rounded-md p-3 mx-4 mb-4">
+              ⚠️ {errorMessage}
+            </div>
+            <Button
+              label="Tillbaka"
+              color={isDarkMode ? 'darkModeSecondary' : 'danger'}
+              textColor="stone-50"
+              link="/newtranscription"
+            />
+          </>
         ) : segments.length === 0 ? (
-          <ProgressBar progress={progress} />
+          <ProgressBar progress={progress} status={status} />
         ) : (
           mergeConsecutiveSegments(segments).map((segment, index) =>
             smallScreenMode ? (

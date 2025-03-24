@@ -12,7 +12,7 @@ export default function StepAnimation() {
         clearInterval(interval)
         return prev
       })
-    }, 800)
+    }, 400)
 
     return () => clearInterval(interval)
   }, [])
@@ -44,7 +44,7 @@ export default function StepAnimation() {
 
           {/* Bubblan */}
           <div
-            className={`font-Roboto flex items-center justify-center w-28 h-28 lg:w-44 lg:h-44 rounded-full transform transition duration-300 lg:hover:scale-[1.1] ${
+            className={`font-Roboto flex items-center justify-center w-28 h-28 lg:w-44 lg:h-44 rounded-full transform transition duration-300 ${
               isDarkMode ? 'bg-[#8E0826]' : 'bg-[#EDD896]'
             } text-center px-3 text-[0.75rem] lg:text-sm font-medium shadow-md break-words leading-tight`}
           >

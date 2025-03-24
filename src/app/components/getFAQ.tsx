@@ -37,7 +37,9 @@ export default function FAQ() {
           key={header}
           className="mb-8 flex flex-col justify-evenly text-center content-center w-full"
         >
-          <h2 className="text-xl font-semibold mb-4">{header}</h2>
+          <h2 className="text-xl font-semibold text-[#8E0826] mb-4">
+            {header}
+          </h2>
           {faqs.map((faq) => (
             <AccordionFaq
               key={faq.id}

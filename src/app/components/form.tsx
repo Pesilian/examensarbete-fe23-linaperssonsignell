@@ -26,7 +26,7 @@ export default function Form() {
   return (
     //Form for the transcription settings
     <section
-      className={`flex flex-col lg:col-span-2 lg:col-start-3  lg:justify-self-center lg:self-center rounded-sm h-auto w-auto lg:w-96 p-2 ${isDarkMode ? 'bg-stone-950' : ' bg-white'}`}
+      className={`flex flex-col lg:col-span-2 lg:col-start-3  lg:justify-self-center lg:self-center rounded-sm h-auto w-auto lg:w-96 p-2 ${isDarkMode ? 'bg-stone-800' : ' bg-white'}`}
     >
       <h2 className="font-Roboto text-3xl font-bold text-[#8E0826]">
         Inställningar

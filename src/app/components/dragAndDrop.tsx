@@ -3,7 +3,7 @@ import { useRef, useState } from 'react'
 
 //Importerade icons från react-icons
 import { LuAudioLines } from 'react-icons/lu'
-import { AiFillCheckCircle, AiFillCloseCircle } from 'react-icons/ai'
+import { AiOutlineCloseCircle, AiOutlineCheckCircle } from 'react-icons/ai'
 import { DarkMode } from '@/src/services/themeService'
 
 // This component is a drag and drop component
@@ -145,17 +145,17 @@ export default function DragAndDrop() {
         Max 200MB - WAV, MP3, OGG, M4A
       </h3>
       <div
-        className={`self-center justify-center items-center w-5/6 h-60 flex ${isDarkMode ? 'bg-stone-700' : 'bg-[#A9CFE0]'} rounded mb-8`}
+        className={`self-center justify-center items-center w-5/6 h-60 flex ${isDarkMode ? 'bg-stone-700' : 'bg-[#1A7267]'} rounded mb-8`}
       >
         <form
-          className={`p-8 w-5/6 h-5/6 rounded text-center flex flex-col justify-center  ${
+          className={`p-8 w-5/6 h-5/6 rounded text-center flex flex-col justify-center transition-all duration-500 ease-in-out ${
             dragActive
               ? isDarkMode
-                ? 'bg-stone-600 hover:bg-stone-500'
-                : 'bg-[#C3DDE9] hover:bg-stone-100'
+                ? 'bg-stone-600'
+                : 'bg-[#5F8E88]'
               : isDarkMode
                 ? 'bg-stone-700 hover:bg-stone-600'
-                : 'bg-[#A9CFE0] hover:bg-[#C3DDE9]'
+                : 'bg-[#1A7267] hover:bg-[#5F8E88]'
           }`}
           onDragEnter={handleDragEnter}
           onSubmit={(e) => e.preventDefault()}
@@ -172,26 +172,29 @@ export default function DragAndDrop() {
           />
           {!audioFile ? (
             <div onClick={openFileExplorer} className="flex flex-col">
-              <p className="mt-4 mb-2 text-xs">Dra och släpp din fil här</p>
-              <LuAudioLines className="self-center" />
-              <p className="text-xs mt-2">eller klicka för att välja en fil</p>
+              <p className="mt-4 mb-2 text-white text-xs">
+                Dra och släpp din fil här
+              </p>
+              <LuAudioLines className="self-center text-white" />
+              <p className="text-xs mt-2 text-white">
+                eller klicka för att välja en fil
+              </p>
             </div>
           ) : (
             //On upload, different messages are displayed depending on upload status and if file is uploading
             <div className="flex flex-col items-center" onClick={removeFile}>
               {isUploading ? (
                 <div className="flex flex-col justify-center items-center">
-                  <div className="w-16 h-16 border-t-4 border-green-200 border-solid rounded-full animate-spin mb-2" />
-                  <p className="text-xs">Laddar upp...</p>
+                  <div className="w-20 h-20 border-t-4 border-white border-solid rounded-full animate-spin mb-2" />
                 </div>
               ) : uploadStatus === 'Uppladdad' ? (
-                <span className="mt-4 mb-2 flex flex-col items-center text-xs">
-                  <AiFillCheckCircle className="mb-2 size-8 text-green-500" />
+                <span className="mt-4 mb-2 flex flex-col items-center text-xs text-white">
+                  <AiOutlineCheckCircle className="mb-2 size-6 text-white" />
                   {audioFile?.name}
                 </span>
               ) : (
-                <span className="mt-4 mb-2 flex flex-col items-center text-xs">
-                  <AiFillCloseCircle className="mb-2 size-8 text-red-500" />
+                <span className="mt-4 mb-2 flex flex-col items-center text-xs text-white">
+                  <AiOutlineCloseCircle className="mb-2 size-6 text-red-500" />
                   Uppladdning misslyckades
                 </span>
               )}
