@@ -31,8 +31,8 @@ export default function AccordionFaq({ question, answer }: FaQAccordation) {
             : 'text-black'
       }`}
     >
-      <div className="flex justify-between items-center">
-        <span className="font-medium text-sm lg:text-lg transition-all ease-in-out duration-700">
+      <div className="flex justify-between items-center ">
+        <span className="font-medium text-sm lg:text-lg transition-all ease-in-out duration-700 ">
           {question}
         </span>
         <HiOutlineChevronDown

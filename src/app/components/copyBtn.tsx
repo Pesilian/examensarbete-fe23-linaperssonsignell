@@ -23,12 +23,11 @@ export default function CopyBtn({ text }: CopyBtnProps) {
   return (
     <motion.button
       onClick={copyToClipboard}
-      className="flex items-center w-auto lg:pr-8 h-12 font-bold "
+      className="flex items-center w-auto lg:pr-8 lg:h-12 h-auto  "
       animate={{ color: copied ? '#1A7267' : '#1c1917' }}
       transition={{ duration: 0.5 }}
     >
-      <MdOutlineCopyAll className="mr-2 text-xl" />
-      {copied ? 'Kopierad' : 'Kopiera'}
+      <MdOutlineCopyAll className="mr-2  text-2xl lg:text-3xl" />
     </motion.button>
   )
 }
