@@ -3,6 +3,8 @@ import Link from 'next/link'
 
 //Button component, is used in newtranscription.tsx, is made to be reusable w. different colors and links
 
+//Is used on several places component:form.tsx and page:transcription
+
 interface ButtonProps {
   label: string
   textColor: string

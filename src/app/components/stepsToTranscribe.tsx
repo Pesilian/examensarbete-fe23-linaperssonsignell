@@ -1,7 +1,8 @@
 import { DarkMode } from '@/src/services/themeService'
 import { useEffect, useState } from 'react'
 
-//Animation on fron page to illustrate the steps to start a new transcription
+//Animation on landing page to illustrate the steps to start a new transcription
+//Is used on page:Page.tsx
 
 export default function StepAnimation() {
   const [visibleSteps, setVisibleSteps] = useState(0)

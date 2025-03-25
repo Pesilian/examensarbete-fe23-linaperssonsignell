@@ -11,6 +11,7 @@ interface DesktopProps {
 
 //Component that renders finished and segmented transcription if on desktop
 //Is the main focus on the transcribed page
+
 export default function Desktop({ speaker, start, end, text }: DesktopProps) {
   const isDarkMode = DarkMode()
 

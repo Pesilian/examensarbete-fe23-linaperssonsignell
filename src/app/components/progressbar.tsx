@@ -6,6 +6,7 @@ interface ProgressBarProps {
 }
 
 //simple progress bar component
+//Is used on page:transcibed
 
 export default function ProgressBar({ progress, status }: ProgressBarProps) {
   return (

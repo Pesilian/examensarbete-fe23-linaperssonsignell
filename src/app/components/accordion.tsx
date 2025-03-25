@@ -12,6 +12,8 @@ interface FaQAccordation {
 // Shows a question and toggles the visibility of the answer on click.
 // Supports dark mode styling and includes open/close icons.
 
+//Is used in getFAQ
+
 export default function AccordionFaq({ question, answer }: FaQAccordation) {
   const isDarkMode = DarkMode()
   const [open, setOpen] = useState(false)

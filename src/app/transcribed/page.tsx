@@ -29,6 +29,7 @@ export default function FinishedTranscription() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [totalDuration, setTotalDuration] = useState(0)
   const [status, setStatus] = useState<string>('Transkriberar ljud')
+  const [fileName, setFileName] = useState('Ingen fil')
   const isDarkMode = DarkMode()
   const [formData, setFormData] = useState<{
     selectNumber: number | null
@@ -72,9 +73,12 @@ export default function FinishedTranscription() {
   }, [])
 
   useEffect(() => {
-    const savedFileName = localStorage.getItem('fileName')
-    if (savedFileName) {
-      console.log('Uppladdad fil:', savedFileName)
+    if (typeof window !== 'undefined') {
+      const savedFileName = localStorage.getItem('fileName')
+      if (savedFileName) {
+        console.log('Uppladdad fil:', savedFileName)
+        setFileName(savedFileName)
+      }
     }
   }, [])
 
@@ -274,7 +278,7 @@ export default function FinishedTranscription() {
   return (
     <article className="h-full w-full flex flex-col lg:grid lg:grid-cols-4 lg:content-start mt-8 ">
       <section className="lg:col-span-4 lg:col-start-1 flex flex-col h-auto ">
-        <FileTitle name={localStorage.getItem('fileName') ?? 'Ingen fil'} />
+        <FileTitle name={fileName} />
         <div className="flex lg:pl-8 ">
           <TranscriptionInfo
             speakers={formData?.selectNumber ?? undefined}

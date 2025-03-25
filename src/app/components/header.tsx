@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { DarkMode } from '../../services/themeService'
 
 //Main header of page
+//Is used on layout.tsx
 
 export default function Header() {
   const isDarkMode = DarkMode()

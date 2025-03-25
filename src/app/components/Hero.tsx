@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import { DarkMode } from '../../services/themeService'
 
-// This component is the hero image, used on page.tsx
+// This component is the hero image, used on page:page.tsx
 
 export default function Hero() {
   const isDarkMode = DarkMode()

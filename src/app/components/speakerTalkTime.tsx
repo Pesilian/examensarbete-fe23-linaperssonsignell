@@ -14,6 +14,7 @@ interface Props {
 }
 
 //Component to display total speakingtime per speaker changes to hidden on mobile
+//Is used on page:transcribed
 
 function formatTime(totalSeconds: number) {
   const minutes = Math.floor(totalSeconds / 60)

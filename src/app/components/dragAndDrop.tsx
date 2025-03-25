@@ -11,6 +11,8 @@ import { DarkMode } from '@/src/services/themeService'
 // The file is then uploaded to the server
 // The user can also remove the file
 
+//Is used in component:form.tsx
+
 export default function DragAndDrop() {
   const [audioFile, setAudioFile] = useState<File | null>(null)
   const [dragActive, setDragActive] = useState(false)

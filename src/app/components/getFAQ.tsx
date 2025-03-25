@@ -2,6 +2,7 @@
 
 // Standard version – fetches FAQ via the Next.js API route (/api/faq).
 // FAQ data is retrieved from DynamoDB using server-side code in src/app/api/faq/route.ts
+//Is used on page:faq
 
 import { useEffect, useState } from 'react'
 import AccordionFaq from './accordion'

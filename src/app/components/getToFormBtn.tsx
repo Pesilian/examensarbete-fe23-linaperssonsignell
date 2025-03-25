@@ -2,7 +2,7 @@ import { DarkMode } from '@/src/services/themeService'
 import Link from 'next/link'
 
 // This component is a link to the newtranscription page
-// It is used in aboutUs.tsx
+// It is used in component:aboutUs.tsx
 
 export default function ToFormBtn() {
   const isDarkMode = DarkMode()

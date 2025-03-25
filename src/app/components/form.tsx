@@ -1,6 +1,9 @@
 'use client'
 import { useEffect, useState } from 'react'
 
+//Form component to configure the transcription
+//Is used on page:transcribe
+
 //import of components
 import DragAndDrop from './dragAndDrop'
 import Button from './button'
